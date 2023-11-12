@@ -1,4 +1,5 @@
-# important not to call this file or any file as psychopg2 because python will get confuse and it would try to start both files.
+# important not to call this file or any file as psychopg2 because python will
+#  get confuse and it would try to start both files.
 import psycopg2
 
 # connect to "chinook" database
@@ -22,13 +23,16 @@ cursor = connection.cursor()
 # Query 5 - select only the albums with "ArtistId" #51 on the "Album" table
 # cursor.execute('SELECT * FROM "Album" WHERE "ArtistId" = %s', [51])
 
-# Query 6 - select all tracks where the composer is "Queen" from the "Track" table
+# Query 6 - select all tracks where the composer is "Queen"
+#  from the "Track" table
 # cursor.execute('SELECT * FROM "Track" WHERE "Composer" = %s', ["Queen"])
 
 # Query 7 - select only by "ArtistId" #50 from the "Artist" table
-# cursor.execute('SELECT * FROM "Artist" WHERE "ArtistId" = %s', [50]) # Metallica
+# cursor.execute
+# ('SELECT * FROM "Artist" WHERE "ArtistId" = %s', [50]) # Metallica
 
-# Query 8 - select all tracks where the composer is "Metallica" from the "Track" table
+# Query 8 - select all tracks where the composer
+#  is "Metallica" from the "Track" table
 cursor.execute('SELECT * FROM "Track" WHERE "Composer" = %s', ["Metallica"])
 
 # fetch the results (multiple)
