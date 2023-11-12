@@ -24,8 +24,10 @@ class Programmer(base):
 # instead of connecting to the database directly, we will ask for a session
 # create a new instance of sessionmaker, then point to our engine (the db)
 Session = sessionmaker(db)
+
 # opens an actual session by calling the Session() subclass defined above
 session = Session()
+
 
 # creating the database using declarative_base subclass
 base.metadata.create_all(db)
@@ -80,16 +82,32 @@ tim_berners_lee = Programmer(
     famous_for="World Wide Web"
 )
 
+susana_viruglio = Programmer(
+    first_name="Susana",
+    last_name="Viruglio",
+    gender="F",
+    nationality="Spanish",
+    famous_for="Discover Granada"
+)
+
 # add each instance of our programmers to our session
-# session.add(ada_lovelace)
+session.add(ada_lovelace)
 session.add(alan_turing)
 session.add(grace_hopper)
 session.add(margaret_hamilton)
 session.add(bill_gates)
 session.add(tim_berners_lee)
+session.add(susana_viruglio)
+
+
 
 # commmit our session to the database
 session.commit()
+
+# updating a single record
+programmer = session.query(Programmer).filter_by(id=7).first()
+
+
 
 # query the database to find all Programmers
 programmers = session.query(Programmer)
@@ -100,5 +118,5 @@ for programmer in programmers:
         programmer.gender,
         programmer.nationality,
         programmer.famous_for,
-        sep= " | "
+        sep=" | "
     )
