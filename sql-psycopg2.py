@@ -39,9 +39,9 @@ cursor.execute('SELECT * FROM "Track" WHERE "Composer" = %s', ["Metallica"])
 results = cursor.fetchall()
 
 # fetch the results (single)
-#results = cursor.fetchone()
+# results = cursor.fetchone()
 
-#close the connection
+# close the connection
 connection.close()
 
 # print results
