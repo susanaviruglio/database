@@ -24,10 +24,8 @@ class Programmer(base):
 # instead of connecting to the database directly, we will ask for a session
 # create a new instance of sessionmaker, then point to our engine (the db)
 Session = sessionmaker(db)
-
 # opens an actual session by calling the Session() subclass defined above
 session = Session()
-
 
 # creating the database using declarative_base subclass
 base.metadata.create_all(db)
@@ -82,31 +80,67 @@ tim_berners_lee = Programmer(
     famous_for="World Wide Web"
 )
 
-susana_viruglio = Programmer(
-    first_name="Susana",
-    last_name="Viruglio",
-    gender="F",
-    nationality="Spanish",
-    famous_for="Discover Granada"
+your_name = Programmer(
+    first_name="Your First Name",
+    last_name="Your Last Name",
+    gender="Your Gender",
+    nationality="Your Nationality",
+    famous_for="Celebrate Yourself Here"
 )
 
 # add each instance of our programmers to our session
-session.add(ada_lovelace)
-session.add(alan_turing)
-session.add(grace_hopper)
-session.add(margaret_hamilton)
-session.add(bill_gates)
-session.add(tim_berners_lee)
-session.add(susana_viruglio)
+# session.add(ada_lovelace)
+# session.add(alan_turing)
+# session.add(grace_hopper)
+# session.add(margaret_hamilton)
+# session.add(bill_gates)
+# session.add(tim_berners_lee)
+# session.add(your_name)
 
-
-
-# commmit our session to the database
-session.commit()
 
 # updating a single record
-programmer = session.query(Programmer).filter_by(id=7).first()
+# programmer = session.query(Programmer).filter_by(id=7).first()
+# programmer.famous_for = "World President"
 
+# commit our session to the database
+# session.commit()
+
+
+# updating multiple records
+# people = session.query(Programmer)
+# for person in people:
+#     if person.gender == "F":
+#         person.gender = "Female"
+#     elif person.gender == "M":
+#         person.gender = "Male"
+#     else:
+#         print("Gender not defined")
+#     session.commit()
+
+
+# deleting a single record
+# fname = input("Enter a first name: ")
+# lname = input("Enter a last name: ")
+# programmer = session.query(Programmer).filter_by(first_name=fname, last_name=lname).first()
+# defensive programming
+# if programmer is not None:
+#     print("Programmer Found: ", programmer.first_name + " " + programmer.last_name)
+#     confirmation = input("Are you sure you want to delete this record? (y/n) ")
+#     if confirmation.lower() == "y":
+#         session.delete(programmer)
+#         session.commit()
+#         print("Programmer has been deleted")
+#     else:
+#         print("Programmer not deleted")
+# else:
+#     print("No records found")
+
+
+# delete multiple/all records DONT USE THIS CODE JUST DEMOSTRATION
+# programmers = session.query(Programmer)
+# for programmer in programmers:
+#     session.delete(programmer)
+#     session.commit()
 
 
 # query the database to find all Programmers

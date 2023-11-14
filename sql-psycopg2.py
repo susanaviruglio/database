@@ -45,5 +45,5 @@ results = cursor.fetchall()
 connection.close()
 
 # print results
-for result in results:
-    print(result)
+#for result in results:
+    #print(result)
